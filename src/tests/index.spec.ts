@@ -17,6 +17,7 @@ describe('test middleware', () => {
       await axios.get('/token').catch(err => {
         expect(err.response.status).toBe(401)
       })
+      expect.hasAssertions()
     })
 
     test('failed with wrong token', async () => {
@@ -27,6 +28,7 @@ describe('test middleware', () => {
       }).catch(err => {
         expect(err.response.status).toBe(401)
       })
+      expect.hasAssertions()
     })
 
     test('success', async () => {
@@ -45,6 +47,7 @@ describe('test middleware', () => {
       await axios.get('/referer').catch(err => {
         expect(err.response.status).toBe(403)
       })
+      expect.hasAssertions()
     })
 
     test('failed with wrong referer', async () => {
@@ -55,6 +58,7 @@ describe('test middleware', () => {
       }).catch(err => {
         expect(err.response.status).toBe(401)
       })
+      expect.hasAssertions()
     })
 
     test('success', async () => {
@@ -73,6 +77,7 @@ describe('test middleware', () => {
       await axios.get('/token-referer').catch(err => {
         expect(err.response.status).toBe(403)
       })
+      expect.hasAssertions()
     })
 
     test('second failed with token', async () => {
@@ -83,6 +88,7 @@ describe('test middleware', () => {
       }).catch(err => {
         expect(err.response.status).toBe(401)
       })
+      expect.hasAssertions()
     })
 
     test('success', async () => {
@@ -91,8 +97,6 @@ describe('test middleware', () => {
           Authorization: 'Bearer token',
           Referer: 'http://localhost:5173'
         }
-      }).catch(err => {
-        expect(err.response.status).toBe(401)
       })
     })
   })
@@ -105,6 +109,7 @@ describe('test middleware', () => {
       }).catch(err => {
         expect(err.response.status).toBe(400)
       })
+      expect.hasAssertions()
     })
 
     test('login success', async () => {
