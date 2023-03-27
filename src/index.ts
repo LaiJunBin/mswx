@@ -9,10 +9,14 @@ import type {
   ResponseComposition
 } from 'msw'
 
+const config = {
+  API_PREFIX: 'http://localhost:5173'
+}
+
 type Method = keyof typeof rest
 const customRest = {
   ...rest,
-  API_PREFIX: 'http://localhost:5173',
+  config,
   middleware: (
     resolver: (
       req: RestRequest<DefaultBodyType, PathParams<string>>,
@@ -34,7 +38,7 @@ const customRest = {
     }
   },
   define: (method: string, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
-    return customRest[method as Method](path, resolver)
+    return rest[method as Method](config.API_PREFIX + path, resolver)
   }
 }
 
@@ -43,13 +47,9 @@ methods.forEach((method) => {
   customRest[method] = (() => {
     const fn = customRest[method]
     return (path, resolver) => {
-      return fn(customRest.API_PREFIX + path, resolver)
+      return fn(config.API_PREFIX + path, resolver)
     }
   })()
 })
-
-customRest.define = (method: string, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
-  return customRest[method as Method](path, resolver)
-}
 
 export { customRest as rest }

@@ -23,7 +23,7 @@
       "require": "./dist/mswx.umd.cjs"
     }
   },
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",

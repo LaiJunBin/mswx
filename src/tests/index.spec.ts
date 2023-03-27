@@ -4,7 +4,7 @@ import { handlers } from './handlers'
 import axios from 'axios'
 import { rest } from '../'
 
-axios.defaults.baseURL = rest.API_PREFIX
+axios.defaults.baseURL = rest.config.API_PREFIX
 
 const server = setupServer(...handlers)
 beforeAll(() => server.listen())
