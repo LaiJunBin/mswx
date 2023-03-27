@@ -18,9 +18,9 @@ const customRest = {
       req: RestRequest<DefaultBodyType, PathParams<string>>,
       res: ResponseComposition<DefaultBodyType>,
       ctx: RestContext,
-      next: () => void
-    ) => void
-  ) => {
+      next: () => RestHandler<MockedRequest<DefaultBodyType>>
+    ) => any
+  ) : (handler: RestHandler<MockedRequest<DefaultBodyType>>) => RestHandler<MockedRequest<DefaultBodyType>> => {
     return (
       handler: RestHandler<MockedRequest<DefaultBodyType>>
     ): RestHandler<MockedRequest<DefaultBodyType>> => {
