@@ -37,7 +37,13 @@ const customRest = {
       })
     }
   },
-  define: (method: string, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
+  define: (method: string, path: string, resolver:
+    (
+      req: RestRequest<DefaultBodyType, PathParams<string>>,
+      res: ResponseComposition<DefaultBodyType>,
+      ctx: RestContext
+    ) => any
+  ) => {
     return rest[method as Method](config.API_PREFIX + path, resolver)
   }
 }
