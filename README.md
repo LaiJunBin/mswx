@@ -26,7 +26,7 @@ A syntactic sugar to define the endpoint, as the below example equals.
   rest.get('/url', (_, res, ctx) => {
     return res(ctx.status(200))
   })
-  // 和
+  // and
   rest.define('get', '/url', (_, res, ctx) => {
     return res(ctx.status(200))
   })
