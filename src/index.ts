@@ -33,8 +33,8 @@ const customRest = {
       })
     }
   },
-  define: (method: Method, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
-    return rest[method](path, resolver)
+  define: (method: string, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
+    return customRest[method as Method](path, resolver)
   }
 }
 
@@ -48,8 +48,8 @@ methods.forEach((method) => {
   })()
 })
 
-customRest.define = (method: Method, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
-  return customRest[method](path, resolver)
+customRest.define = (method: string, path: string, resolver: RestHandler<MockedRequest<DefaultBodyType>>['resolver']) => {
+  return customRest[method as Method](path, resolver)
 }
 
 export { customRest as rest }
