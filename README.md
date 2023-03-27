@@ -18,6 +18,10 @@ $ npm i mswx
 
 Set API prefix, default is `http://localhost:5173`, if you want to disable it, can set empty string to it.
 
+```js
+rest.config.API_PREFIX = 'http://localhost:5173'
+```
+
 ## Define
 
 A syntactic sugar to define the endpoint, as the below example equals.

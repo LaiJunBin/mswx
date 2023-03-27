@@ -18,6 +18,10 @@ $ npm i mswx
 
 設定 API 的前綴，預設值為 `http://localhost:5173`，如果不要這個功能可以直接設為空字串。
 
+```js
+rest.config.API_PREFIX = 'http://localhost:5173'
+```
+
 ## Define
 
 定義端點的語法糖，如下範例，兩者相等
