@@ -122,3 +122,17 @@ describe('test middleware', () => {
     })
   })
 })
+
+describe('test define', () => {
+  test('get ok', async () => {
+    await axios.get('/define').then(res => {
+      expect(res.status).toBe(200)
+    })
+  })
+
+  test('post ok', async () => {
+    await axios.post('/define').then(res => {
+      expect(res.status).toBe(200)
+    })
+  })
+})

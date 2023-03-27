@@ -4,8 +4,9 @@ English｜[繁體中文](https://github.com/LaiJunBin/mswx/blob/main/README.zh-t
 
 > The package is extension to msw(Mock Service Worker).
 
-Currently, provide the following two features:
+Currently, provide the following features:
 * [API_PREFIX](#api_prefix)
+* [Define](#define)
 * [Middleware](#middleware)
 
 ## Install
@@ -16,6 +17,20 @@ $ npm i mswx
 ## API_PREFIX
 
 Set API prefix, default is `http://localhost:5173`, if you want to disable it, can set empty string to it.
+
+## Define
+
+A syntactic sugar to define the endpoint, as the below example equals.
+
+```js
+  rest.get('/url', (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
+  // 和
+  rest.define('get', '/url', (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
+```
 
 ## Middleware
 

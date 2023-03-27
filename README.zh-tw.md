@@ -4,8 +4,9 @@
 
 > 這個套件擴展了 msw(Mock Service Worker) 的功能
 
-目前提供下面兩個功能
+目前提供以下功能
 * [API_PREFIX](#api_prefix)
+* [Define](#define)
 * [Middleware](#middleware)
 
 ## 安裝
@@ -16,6 +17,19 @@ $ npm i mswx
 ## API_PREFIX
 
 設定 API 的前綴，預設值為 `http://localhost:5173`，如果不要這個功能可以直接設為空字串。
+
+## Define
+
+定義端點的語法糖，如下範例，兩者相等
+```js
+  rest.get('/url', (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
+  // 和
+  rest.define('get', '/url', (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
+```
 
 ## Middleware
 

@@ -51,6 +51,25 @@ const publicHandlers = [
   })
 ]
 
+const defineHandlers = [
+  rest.define('get', '/define', (_, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: 'get'
+      })
+    )
+  }),
+  rest.define('post', '/define', (_, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: 'post'
+      })
+    )
+  })
+]
+
 const AuthTokenMiddleware = rest.middleware((req, res, ctx, next) => {
   const authorization = req.headers.get('Authorization')
   if (authorization === 'Bearer token') {
@@ -71,5 +90,6 @@ export const handlers = [
   ...authTokenHandlers.map(AuthTokenMiddleware),
   ...authRefererHandlers.map(AuthRefererMiddleware),
   ...authTokenAndRefererHanders.map(AuthTokenMiddleware).map(AuthRefererMiddleware),
-  ...publicHandlers
+  ...publicHandlers,
+  ...defineHandlers
 ]
