@@ -135,4 +135,10 @@ describe('test define', () => {
       expect(res.status).toBe(200)
     })
   })
+
+  test('get upper ok', async () => {
+    await axios.get('/define-upper').then(res => {
+      expect(res.status).toBe(200)
+    })
+  })
 })

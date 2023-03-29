@@ -67,6 +67,14 @@ const defineHandlers = [
         data: 'post'
       })
     )
+  }),
+  rest.define('GET', '/define-upper', (_, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: 'get upper'
+      })
+    )
   })
 ]
 

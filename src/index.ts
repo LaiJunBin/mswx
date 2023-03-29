@@ -44,7 +44,7 @@ const customRest = {
       ctx: RestContext
     ) => any
   ) => {
-    return rest[method as Method](config.API_PREFIX + path, resolver)
+    return rest[(method.toLowerCase()) as Method](config.API_PREFIX + path, resolver)
   }
 }
 
