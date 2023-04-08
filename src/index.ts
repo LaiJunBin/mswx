@@ -24,7 +24,7 @@ function define (meta: { method: string, path: string }, resolver: defineResolve
 function define (method: string, path: string, resolver: defineResolverType): RestHandler<MockedRequest<DefaultBodyType>>;
 function define (...args: any[]): RestHandler<MockedRequest<DefaultBodyType>> {
   const [method, path, resolver] = args.length === 2 ? [args[0].method, args[0].path, args[1]] : args
-  return rest[method as Method](config.API_PREFIX + path, resolver)
+  return rest[method.toLowerCase() as Method](config.API_PREFIX + path, resolver)
 }
 
 const customRest = {
