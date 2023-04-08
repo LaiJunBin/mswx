@@ -34,6 +34,13 @@ A syntactic sugar to define the endpoint, as the below example equals.
   rest.define('get', '/url', (_, res, ctx) => {
     return res(ctx.status(200))
   })
+  // or
+  rest.define({
+    method: 'get',
+    path: '/url'
+  }, (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
 ```
 
 ## Middleware

@@ -14,6 +14,19 @@ const config = {
 }
 
 type Method = keyof typeof rest
+
+type defineResolverType = (
+  req: RestRequest<DefaultBodyType, PathParams<string>>,
+  res: ResponseComposition<DefaultBodyType>,
+  ctx: RestContext
+) => any
+function define (meta: { method: string, path: string }, resolver: defineResolverType): RestHandler<MockedRequest<DefaultBodyType>>;
+function define (method: string, path: string, resolver: defineResolverType): RestHandler<MockedRequest<DefaultBodyType>>;
+function define (...args: any[]): RestHandler<MockedRequest<DefaultBodyType>> {
+  const [method, path, resolver] = args.length === 2 ? [args[0].method, args[0].path, args[1]] : args
+  return rest[method as Method](config.API_PREFIX + path, resolver)
+}
+
 const customRest = {
   ...rest,
   config,
@@ -37,15 +50,7 @@ const customRest = {
       })
     }
   },
-  define: (method: string, path: string, resolver:
-    (
-      req: RestRequest<DefaultBodyType, PathParams<string>>,
-      res: ResponseComposition<DefaultBodyType>,
-      ctx: RestContext
-    ) => any
-  ) => {
-    return rest[method as Method](config.API_PREFIX + path, resolver)
-  }
+  define
 }
 
 const methods: Method[] = ['get', 'post', 'put', 'delete', 'patch']

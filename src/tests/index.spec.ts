@@ -136,3 +136,17 @@ describe('test define', () => {
     })
   })
 })
+
+describe('test define meta', () => {
+  test('get ok', async () => {
+    await axios.get('/define-meta').then(res => {
+      expect(res.status).toBe(200)
+    })
+  })
+
+  test('post ok', async () => {
+    await axios.post('/define-meta').then(res => {
+      expect(res.status).toBe(200)
+    })
+  })
+})

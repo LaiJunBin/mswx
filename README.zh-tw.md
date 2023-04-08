@@ -24,13 +24,20 @@ rest.config.API_PREFIX = 'http://localhost:5173'
 
 ## Define
 
-定義端點的語法糖，如下範例，兩者相等
+定義端點的語法糖，如下範例皆為相等。
 ```js
   rest.get('/url', (_, res, ctx) => {
     return res(ctx.status(200))
   })
   // 和
   rest.define('get', '/url', (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
+  // 或
+  rest.define({
+    method: 'get',
+    path: '/url'
+  }, (_, res, ctx) => {
     return res(ctx.status(200))
   })
 ```
