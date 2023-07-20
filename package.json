@@ -19,11 +19,12 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/mswx.js",
       "require": "./dist/mswx.umd.cjs"
     }
   },
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
